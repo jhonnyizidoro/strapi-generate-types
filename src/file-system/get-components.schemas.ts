@@ -17,7 +17,7 @@ export const getComponentsSchemas = async () => {
     config.strapiComponentsDir
   );
 
-  return (
-    await Promise.all(componentCategoryFolders.map((f) => getFiles(f)))
-  ).flat();
+  return (await Promise.all(componentCategoryFolders.map((f) => getFiles(f))))
+    .flat()
+    .sort((a, b) => a.localeCompare(b, "en"));
 };

@@ -14,7 +14,7 @@ const config = await getConfig();
  */
 export const getApiSchemas = async () => {
   const apiFolders = await getSubdirectories(config.strapiApiDir);
-  return apiFolders.map(
-    (f) => `${f}/content-types/${f.split("/").pop()}/schema.json`
-  );
+  return apiFolders
+    .map((f) => `${f}/content-types/${f.split("/").pop()}/schema.json`)
+    .sort((a, b) => a.localeCompare(b, "en"));
 };
