@@ -1,15 +1,10 @@
 {
-  "name": "strapi-types-generate",
+  "name": "@ji/strapi-types-generate",
+  "description": "Generate typescript interfaces using Strapi Schemas",
+  "license": "ISC",
   "type": "module",
   "version": "0.0.1",
-  "private": true,
-  "description": "Generate strapi types",
-  "keywords": [
-    "strapi",
-    "types",
-    "generator"
-  ],
-  "license": "MIT",
+  "private": false,
   "exports": "./dist/index.js",
   "engines": {
     "node": ">=22.0.0"
@@ -25,5 +20,22 @@
   },
   "bin": {
     "stg": "./dist/index.js"
-  }
+  },
+  "author": "Jhonny Izidoro Menarim",
+  "repository": {
+    "url": "https://github.com/jhonnyizidoro/strapi-generate-types",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/jhonnyizidoro/strapi-generate-types/issues"
+  },
+  "homepage": "https://github.com/jhonnyizidoro/strapi-generate-types",
+  "keywords": [
+    "strapi",
+    "types",
+    "generator",
+    "generate",
+    "typescript",
+    "schema"
+  ]
 }
