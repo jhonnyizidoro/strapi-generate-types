@@ -1,5 +1,5 @@
 {
-  "name": "@ji/strapi-types-generate",
+  "name": "@jmen/strapi-types-generate",
   "description": "Generate typescript interfaces using Strapi Schemas",
   "license": "ISC",
   "type": "module",
@@ -37,5 +37,8 @@
     "generate",
     "typescript",
     "schema"
+  ],
+  "files": [
+    "dist"
   ]
 }
