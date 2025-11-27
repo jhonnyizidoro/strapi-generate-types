@@ -13,7 +13,7 @@ import { createDir } from "./file-system/create-dir";
 import { userPermissionsStrapiInterfaces } from "./constants/user-permissions";
 
 const cfg = await getConfig();
-await exists(cfg.strapiDir, { dieOnError: true });
+await exists(cfg.strapiApiDir, { dieOnError: true });
 const apiSchemas = await getApiSchemas();
 const componentSchemas = await getComponentsSchemas();
 

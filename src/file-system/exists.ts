@@ -10,6 +10,8 @@ export const exists = async (path: string, opts?: { dieOnError?: boolean }) => {
     return true;
   } catch {
     if (opts?.dieOnError) {
+      console.log(path);
+
       const msg = `Unable to access directory ${path}, please provide proper configuration and make sure the directory exists.`;
       console.log(`\x1b[31m${msg}\x1b[0m`);
       process.exit();

@@ -12,6 +12,7 @@ const exists = async (path, opts) => {
     return true;
   } catch {
     if (opts?.dieOnError) {
+      console.log(path);
       const msg = `Unable to access directory ${path}, please provide proper configuration and make sure the directory exists.`;
       console.log(`\x1B[31m${msg}\x1B[0m`);
       process.exit();
@@ -396,7 +397,7 @@ const user = `
 const userPermissionsStrapiInterfaces = usersEnabled ? [role, permission, await getUsersInterface() || user] : [];
 
 const cfg = await getConfig();
-await exists(cfg.strapiDir, { dieOnError: true });
+await exists(cfg.strapiApiDir, { dieOnError: true });
 const apiSchemas = await getApiSchemas();
 const componentSchemas = await getComponentsSchemas();
 const apiInterfaces = await Promise.all(

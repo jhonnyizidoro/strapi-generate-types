@@ -4,15 +4,15 @@ This library provides a CLI for [Strapi V5](https://strapi.io/) that generates t
 
 ## Installation
 
-`pnpm add -D <>`
+`pnpm add -D @jmen/strapi-types-generate`
 
 ## Configuration file
 
-Create a `strapi-types-generate.json` in the root of your project.
+First, create a `strapi-types-generate.json` file in the root of your project.
 
-You cal also run the CLI providing the path fpr the config file: `pnpm stg --config=src/config.json`.
+You cal also run the CLI providing the path for the config file: `pnpm stg --config=src/config.json`.
 
-`strapi-types-generate.json`
+Example `strapi-types-generate.json`:
 
 ```json
 {
@@ -37,20 +37,20 @@ You cal also run the CLI providing the path fpr the config file: `pnpm stg --con
 }
 ```
 
-You can also pass any of the config keys as argument to the CLI.
+You can also provide any of the configuration as argument to the CLI.
 
 ```shell
-pnpm stg --strapiDir=backend --outputDir='frontend/src/@types' --dateType='Date' --customFields='{"plugin::color-picker.color":"`#${string}`","plugin::ckeditor5.CKEditor":"string"}'
+pnpm stg --strapiDir='backend' --outputDir='frontend/src/@types' --dateType='Date' --customFields='{"plugin::color-picker.color":"`#${string}`","plugin::ckeditor5.CKEditor":"string"}'
 ```
 
 ## Configuration options
 
 | Property       | Type                                                                             | Default value | Description                                                                                                        |
 | -------------- | -------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `strapiDir`    | `string`                                                                         | `"."`         | This prop defines where is the strapi project located, very useful for monorepos                                   |
-| `outputDir`    | `string`                                                                         | `"./@types"`  | Define where the types file will be stored                                                                         |
-| `dateType`     | `string`                                                                         | `"string"`    | Dates may be returned in different formats depending on how you're fetching data. You may want to use "Date" here. |
-| `customFields` | `Record<string, string \| { name: string; attributes: Record<string, unknown> }` | `{}`          | Provide type definition for plugins custom fields.                                                                 |
+| `strapiDir`    | `string`                                                                         | `"."`         | Strapi root directory                                                                                              |
+| `outputDir`    | `string`                                                                         | `"./@types"`  | Interfaces output directory                                                                                        |
+| `dateType`     | `string`                                                                         | `"string"`    | Dates may be returned in different formats depending on how you're fetching data. You may want to use `Date` here. |
+| `customFields` | `Record<string, string \| { name: string; attributes: Record<string, unknown> }` | `{}`          | Provide type definition for custom fields.                                                                         |
 
 ## Outputs
 
@@ -69,7 +69,7 @@ export enum StrapiRoute {
 }
 
 // Example
-export const get = async (
+export const get = async <T>(
   route: StrapiRoute,
   opts?: { documentId?: string }
 ) => {
@@ -79,13 +79,14 @@ export const get = async (
     endpoint = endpoint.replace("{documentId}", opts?.documentId);
   }
 
-  // your logic to fetch data
+  const res = await fetch(`...`);
+  const data = (await res.json()) as Strapi.Payload<T>;
 };
 ```
 
 ### Api.d.ts
 
-This file is for your collections and single types
+`Api.d.ts` contains your `collections` and `single types`
 
 ```typescript
 declare namespace Api {
@@ -172,7 +173,7 @@ declare namespace Strapi {
     isIconNameEditable?: boolean;
   }
 
-  // Only generated if @strapi/plugin-users-permissions is in package.json
+  // Role, Permissions and User is only generated if @strapi/plugin-users-permissions is in package.json
   interface Role {
     id?: number;
     permissions?: Strapi.Permission[];
