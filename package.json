@@ -3,7 +3,7 @@
   "description": "Generate typescript interfaces using Strapi Schemas",
   "license": "ISC",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "exports": "./dist/index.js",
   "engines": {
@@ -14,10 +14,12 @@
     "watch": "pkgroll --watch",
     "release": "npm pack && npm publish --access public"
   },
+  "dependencies": {
+    "prettier": "^3.7.1"
+  },
   "devDependencies": {
     "@types/node": "^24.10.1",
-    "pkgroll": "^2.21.3",
-    "prettier": "^3.7.1"
+    "pkgroll": "^2.21.3"
   },
   "bin": {
     "stg": "./dist/index.js"
