@@ -1,0 +1,29 @@
+{
+  "name": "strapi-types-generate",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Generate strapi types",
+  "keywords": [
+    "strapi",
+    "types",
+    "generator"
+  ],
+  "license": "MIT",
+  "exports": "./dist/index.js",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "pkgroll",
+    "watch": "pkgroll --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "pkgroll": "^2.21.3",
+    "prettier": "^3.7.1"
+  },
+  "bin": {
+    "stg": "./dist/index.js"
+  }
+}
