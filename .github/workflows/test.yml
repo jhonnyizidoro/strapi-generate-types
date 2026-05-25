@@ -13,28 +13,29 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # Testa em múltiplas versões do Node para garantir compatibilidade da biblioteca
+        node-version: [22.x, 24.x]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm" # Ativa o cache automático do node_modules para rodar mais rápido
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
-      - name: Run Linter / Formatting (Opcional)
-        run: npm run lint --if-present
+      - name: Run Linter / Formatting
+        run: pnpm run lint --if-present
 
       - name: Run Tests with Coverage
-        run: npm test -- --coverage --watch=false
-        # O `--if-present` ou flags extras dependem do seu script, ajuste se necessário
+        run: pnpm test -- --coverage
 
       - name: Verify TypeScript Build
-        run: npm run build --if-present
+        run: pnpm run build --if-present
