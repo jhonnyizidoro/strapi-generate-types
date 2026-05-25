@@ -261,9 +261,7 @@ const getSubdirectories = async (path) => {
 const config$1 = await getConfig();
 const getApiSchemas = async () => {
   const apiFolders = await getSubdirectories(config$1.strapiApiDir);
-  return apiFolders.map(
-    (f) => `${f}/content-types/${f.split("/").pop()}/schema.json`
-  );
+  return apiFolders.map((f) => `${f}/content-types/${f.split("/").pop()}/schema.json`).sort((a, b) => a.localeCompare(b, "en"));
 };
 
 const { usersEnabled: usersEnabled$1, outputDir } = await getConfig();
@@ -335,7 +333,7 @@ const getComponentsSchemas = async () => {
   const componentCategoryFolders = await getSubdirectories(
     config.strapiComponentsDir
   );
-  return (await Promise.all(componentCategoryFolders.map((f) => getFiles(f)))).flat();
+  return (await Promise.all(componentCategoryFolders.map((f) => getFiles(f)))).flat().sort((a, b) => a.localeCompare(b, "en"));
 };
 
 const createDir = async (path) => {

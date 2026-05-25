@@ -1,3 +1,5 @@
+![Tests](https://img.shields.io/github/actions/workflow/status/jhonnyizidoro/strapi-generate-types/test.yml?branch=main&style=flat-square&label=tests)
+
 # Strapi types generate
 
 This library provides a CLI for [Strapi V5](https://strapi.io/) that generates typescript interfaces based on your components, collections and single types. This library supports `dynamic zones`, `components` and `relations`.
@@ -71,7 +73,7 @@ export enum StrapiRoute {
 // Example
 export const get = async <T>(
   route: StrapiRoute,
-  opts?: { documentId?: string }
+  opts?: { documentId?: string },
 ) => {
   let endpoint = `http://localhost:1337/api/${route}`;
 

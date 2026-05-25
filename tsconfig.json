@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "types": ["vitest/globals"]
+  },
+  "include": ["src/**/*", "__tests__/**/*", "vitest.config.ts"]
+}
