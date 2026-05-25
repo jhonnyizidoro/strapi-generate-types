@@ -36,5 +36,9 @@ jobs:
       - name: Run Tests with Coverage
         run: pnpm test -- --coverage
 
+      - name: Upload coverage to Codecov
+        if: matrix.node-version == '22.x'
+        uses: codecov/codecov-action@v5
+
       - name: Verify TypeScript Build
         run: pnpm run build

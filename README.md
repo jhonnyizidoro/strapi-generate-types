@@ -1,4 +1,6 @@
 ![Tests](https://img.shields.io/github/actions/workflow/status/jhonnyizidoro/strapi-generate-types/test.yml?branch=main&style=flat-square&label=tests)
+![Coverage](https://img.shields.io/codecov/c/github/jhonnyizidoro/strapi-generate-types?style=flat-square)
+![License](https://img.shields.io/github/license/jhonnyizidoro/strapi-generate-types?style=flat-square)
 
 # Strapi types generate
 
